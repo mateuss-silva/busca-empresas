@@ -47,7 +47,7 @@ Estes itens não são obrigatórios, porém desejáveis.
 
 
 ## 🚨 Informações Importantes
-* Layout e recortes disponíveis no Figma (http://bit.ly/testeios)
+* Layout e recortes disponíveis no Figma (https://bit.ly/3qWDQk8)
 * Você deve fazer um cadastro no Figma para ter acesso ao layout.
 * Integração disponível a partir de uma collection para Postman (https://www.getpostman.com/apps) disponível neste repositório.
 
