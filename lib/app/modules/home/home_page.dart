@@ -1,8 +1,8 @@
+import 'package:empresas_flutter/app/modules/home/bloc/home_bloc.dart';
+import 'package:empresas_flutter/app/modules/home/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-
-import 'counter_cubit.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -11,12 +11,12 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
-  final CounterCubit _counterCubit = Modular.get();
+class _HomePageState extends ModularState<HomePage, HomeController> {
+  final HomeBloc _counter = Modular.get();
 
   @override
   void dispose() {
-    _counterCubit.close();
+    _counter.close();
     super.dispose();
   }
 
@@ -24,29 +24,20 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Home")),
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          FloatingActionButton(
-            child: const Icon(Icons.remove),
-            onPressed: _counterCubit.decrement,
-          ),
-          FloatingActionButton(
-            child: const Icon(Icons.add),
-            onPressed: _counterCubit.increment,
-          ),
-        ],
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.remove),
+        onPressed: () => _counter.add(const IncrementEvent()),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text("Button Tapped:"),
-            BlocBuilder<CounterCubit, int>(
-              bloc: _counterCubit,
+            BlocBuilder<HomeBloc, HomeState>(
+              bloc: _counter,
               builder: (context, count) {
                 return Text(
-                  "$count",
+                  "${count.value}",
                   style: Theme.of(context).textTheme.headline3,
                 );
               },
