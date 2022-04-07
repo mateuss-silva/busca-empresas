@@ -1,4 +1,4 @@
-import 'package:empresas_flutter/app/modules/auth/login/widgets/semi_circle_widget.dart';
+import 'package:empresas_flutter/app/modules/auth/submodules/login/login/widgets/semi_circle_widget.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 main() {

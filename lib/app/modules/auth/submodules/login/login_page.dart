@@ -1,6 +1,6 @@
-import 'package:empresas_flutter/app/modules/auth/login/widgets/input_text_field_widget.dart';
-import 'package:empresas_flutter/app/modules/auth/login/widgets/login_button_widget.dart';
-import 'package:empresas_flutter/app/modules/auth/login/widgets/semi_circle_widget.dart';
+import 'package:empresas_flutter/app/modules/auth/submodules/login/login/widgets/input_text_field_widget.dart';
+import 'package:empresas_flutter/app/modules/auth/submodules/login/login/widgets/login_button_widget.dart';
+import 'package:empresas_flutter/app/modules/auth/submodules/login/login/widgets/semi_circle_widget.dart';
 import 'package:empresas_flutter/app/modules/auth/submodules/login/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -47,7 +47,7 @@ class LoginPageState extends ModularState<LoginPage, LoginController> {
           const SizedBox(height: 24),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24.0),
-            child: LoginButtonWidget(
+          child: LoginButtonWidget(
               onPressed: () {
                 //TODO: implementar
               },

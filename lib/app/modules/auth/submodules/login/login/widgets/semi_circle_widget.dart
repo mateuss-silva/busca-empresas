@@ -23,10 +23,10 @@ class SemiCircleWidget extends StatelessWidget {
               gradient: LinearGradient(
                 begin: Alignment.bottomLeft,
                 end: Alignment.topRight,
-                colors: [ 
-                  Theme.of(context).primaryColor.withOpacity(0.3),
+                colors: [
+                  const Color(0xFFa589a7),
                   Theme.of(context).primaryColor,
-                  Theme.of(context).primaryColor.withOpacity(0.3),
+                  const Color(0xFFa589a7),
                 ],
               ),
               borderRadius: const BorderRadius.only(

@@ -1,4 +1,4 @@
-import 'package:empresas_flutter/app/modules/auth/login/widgets/login_button_widget.dart';
+import 'package:empresas_flutter/app/modules/auth/submodules/login/login/widgets/login_button_widget.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 main() {

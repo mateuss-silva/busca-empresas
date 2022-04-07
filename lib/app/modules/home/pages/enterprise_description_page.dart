@@ -16,7 +16,7 @@ class EnterpriseDescriptionPageState extends ModularState<EnterpriseDescriptionP
         title: Text(widget.title),
       ),
       body: Column(
-        children: <Widget>[],
+        children: const[],
       ),
     );
   }
