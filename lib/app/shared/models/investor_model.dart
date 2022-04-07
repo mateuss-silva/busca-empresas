@@ -7,7 +7,7 @@ class InvestorModel {
   final String? email;
   final String? city;
   final String? country;
-  final int? balance;
+  final double? balance;
   final String? photo;
   final PortfolioModel? portfolio;
   final double? portfolioValue;

@@ -57,50 +57,49 @@ class _InputTextFieldWidgetState extends State<InputTextFieldWidget> {
               ),
         ),
         const SizedBox(height: 4),
-        SizedBox(
-          height: 48,
-          child: TextFormField(
-            controller: widget.controller,
-            onChanged: widget.onChange,
-            onFieldSubmitted: widget.onSubmitted,
-            textInputAction: widget.onSubmitted != null
-                ? TextInputAction.done
-                : TextInputAction.next,
-            validator: widget.validator,
-            obscureText: widget.obscureText && isObscure,
-            keyboardType: widget.keyboardType,
-            enableSuggestions: false,
-            autocorrect: false,
-            inputFormatters: [
-              LengthLimitingTextInputFormatter(255),
-              ...widget.inputFormatters
-            ],
-            decoration: InputDecoration(
-              contentPadding: const EdgeInsets.symmetric(horizontal: 16),
-              filled: true,
-              fillColor: const Color(0xFFF5F5F5),
-              enabledBorder: OutlineInputBorder(
-                borderSide: const BorderSide(
-                  color: Colors.transparent,
-                ),
-                borderRadius: BorderRadius.circular(4),
+        TextFormField(
+          controller: widget.controller,
+          onChanged: widget.onChange,
+          onFieldSubmitted: widget.onSubmitted,
+          textInputAction: widget.onSubmitted != null
+              ? TextInputAction.done
+              : TextInputAction.next,
+          validator: widget.validator,
+          obscureText: widget.obscureText && isObscure,
+          keyboardType: widget.keyboardType,
+          enableSuggestions: false,
+          autocorrect: false,
+          inputFormatters: [
+            LengthLimitingTextInputFormatter(255),
+            ...widget.inputFormatters
+          ],
+          textAlignVertical: TextAlignVertical.center,
+          decoration: InputDecoration(
+            contentPadding:
+                const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+            filled: true,
+            fillColor: const Color(0xFFF5F5F5),
+            enabledBorder: OutlineInputBorder(
+              borderSide: const BorderSide(
+                color: Colors.transparent,
               ),
-              focusedBorder: OutlineInputBorder(
-                borderSide: const BorderSide(
-                  color: Colors.transparent,
-                ),
-                borderRadius: BorderRadius.circular(4),
-              ),
-              suffixIcon: widget.obscureText
-                  ? InkWell(
-                      borderRadius: BorderRadius.circular(32),
-                      onTap: _changeVisibility,
-                      child: isObscure
-                          ? const Icon(Icons.visibility)
-                          : const Icon(Icons.visibility_off),
-                    )
-                  : null,
+              borderRadius: BorderRadius.circular(4),
             ),
+            focusedBorder: OutlineInputBorder(
+              borderSide: const BorderSide(
+                color: Colors.transparent,
+              ),
+              borderRadius: BorderRadius.circular(4),
+            ),
+            suffixIcon: widget.obscureText
+                ? InkWell(
+                    borderRadius: BorderRadius.circular(32),
+                    onTap: _changeVisibility,
+                    child: isObscure
+                        ? const Icon(Icons.visibility)
+                        : const Icon(Icons.visibility_off),
+                  )
+                : null,
           ),
         ),
       ],

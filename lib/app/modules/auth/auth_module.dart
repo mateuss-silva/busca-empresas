@@ -9,7 +9,7 @@ class AuthModule extends Module {
   @override
   final List<Bind> binds = [
     Bind.lazySingleton((i) => AuthRepository(i.get<Dio>())),
-    Bind.lazySingleton((i) => LoginBloc()),
+    Bind.lazySingleton((i) => LoginBloc(i.get<AuthRepository>())),
     Bind.lazySingleton((i) => LoginController(i.get<LoginBloc>())),
   ];
 

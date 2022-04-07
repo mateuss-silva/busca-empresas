@@ -1,7 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:empresas_flutter/app/modules/auth/irepositories/iauth_repository.dart';
-import 'package:empresas_flutter/app/shared/exceptions/generic_exeption.dart';
+import 'package:empresas_flutter/app/shared/exceptions/generic_exception.dart';
 import 'package:empresas_flutter/app/shared/repositories/base_repository.dart';
+import 'package:empresas_flutter/app/shared/utils/status_code_helper.dart';
 import 'package:empresas_flutter/app/shared/view_models/login_view_model.dart';
 import 'package:empresas_flutter/app/shared/models/investor_model.dart';
 
@@ -14,10 +15,10 @@ class AuthRepository extends BaseRepository implements IAuthRepository {
       var body = login.toJson();
 
       Response response = await dio.post(signIn, data: body);
-      return InvestorModel.fromJson(response.data);
+      return InvestorModel.fromJson(response.data["investor"]);
     } on DioError catch (e) {
-      if (e.response?.statusCode == 401 || e.response?.statusCode == 400) {
-        throw GenericException("Usuário ou senha inválidos");
+      if (StatusCodeHelper.isError(e.response?.statusCode)) {
+        throw GenericException("Usuário e/ou senha inválidos.");
       }
       throw GenericException(
           "Erro ao tentar fazer login, tente novamente mais tarde.");

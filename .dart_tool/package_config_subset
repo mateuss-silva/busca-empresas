@@ -18,6 +18,10 @@ async
 2.12
 file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/async-2.8.2/
 file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/async-2.8.2/lib/
+back_button_interceptor
+2.13
+file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/back_button_interceptor-5.0.2/
+file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/back_button_interceptor-5.0.2/lib/
 bloc
 2.12
 file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/bloc-8.0.3/
@@ -74,6 +78,10 @@ dio
 2.12
 file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/dio-4.0.6/
 file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/dio-4.0.6/lib/
+email_validator
+2.12
+file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/email_validator-2.0.1/
+file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/email_validator-2.0.1/lib/
 equatable
 2.12
 file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/equatable-2.0.3/
@@ -142,6 +150,10 @@ lints
 2.12
 file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/lints-1.0.1/
 file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/lints-1.0.1/lib/
+loader_overlay
+2.12
+file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/loader_overlay-2.0.6/
+file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/loader_overlay-2.0.6/lib/
 logging
 2.12
 file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/logging-1.0.2/

@@ -1,4 +1,6 @@
 import 'package:bloc/bloc.dart';
+import 'package:empresas_flutter/app/modules/auth/irepositories/iauth_repository.dart';
+import 'package:empresas_flutter/app/shared/models/investor_model.dart';
 import 'package:empresas_flutter/app/shared/view_models/login_view_model.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
@@ -7,7 +9,9 @@ part 'login_event.dart';
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  LoginBloc() : super(const LoginIdleState()) {
+  final IAuthRepository _authRepository;
+
+  LoginBloc(this._authRepository) : super(const LoginIdleState()) {
     on<OnChangeEmailEvent>(_onChangeEmail);
     on<OnChangePasswordEvent>(_onChangePassword);
     on<OnSubmitEvent>(_onSubmit);
@@ -31,13 +35,13 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     }
   }
 
-  void _onSubmit(OnSubmitEvent event, Emitter<LoginState> emit) {
+  Future<void> _onSubmit(OnSubmitEvent event, Emitter<LoginState> emit) async {
     final state = this.state as LoginIdleState;
     emit(const LoginLoadingState());
     try {
-      print(state.login);
-      emit(LoginIdleState(login: state.login));
-      //emit(const LoginSuccessState());
+      var investor = await _authRepository.login(state.login);
+
+      emit(LoginSuccessState(investor));
     } catch (e) {
       emit(LoginErrorState(message: e.toString()));
       emit(LoginIdleState(login: state.login));

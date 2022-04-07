@@ -26,7 +26,10 @@ class LoginLoadingState extends LoginState {
 }
 
 class LoginSuccessState extends LoginState {
-  const LoginSuccessState();
+  final InvestorModel investor;
+
+  const LoginSuccessState(this.investor) : super();
+
   @override
   List<Object> get props => [];
 }

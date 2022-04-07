@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 
 class ColorSchemeHelper {
   static const hexPrimaryColor = 0xFFE01E69;
-
   static const hexSecondaryColor = 0xFFE01E69;
+  static const hexOverlayColor = 0xFF404040;
+  static const hexProgressIndicatorColor = 0xFFFBDBE7;
+
+  static const progressIndicatorColor = Color(hexProgressIndicatorColor);
+
+  static const overlayColor = Color(hexOverlayColor);
 
   static const primaryColor = Color(hexPrimaryColor);
 
@@ -23,5 +28,4 @@ class ColorSchemeHelper {
     800: Color.fromRGBO(224, 30, 105, .9),
     900: Color.fromRGBO(224, 30, 105, 1.0),
   };
-
 }

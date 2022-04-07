@@ -3,7 +3,8 @@ import 'package:dio/dio.dart';
 class BaseRepository {
   String get baseUrl => "https://empresas.ioasys.com.br";
   String get api => "$baseUrl/api";
-  String get users => "$api/users";
+  String get v1 => "$api/v1";
+  String get users => "$v1/users";
   String get auth => "$users/auth";
   String get signIn => "$auth/sign_in";
 
