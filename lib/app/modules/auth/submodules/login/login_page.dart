@@ -1,3 +1,4 @@
+import 'package:empresas_flutter/app/modules/auth/submodules/login/blocs/login/login_bloc.dart';
 import 'package:empresas_flutter/app/modules/auth/submodules/login/login/widgets/input_text_field_widget.dart';
 import 'package:empresas_flutter/app/modules/auth/submodules/login/login/widgets/login_button_widget.dart';
 import 'package:empresas_flutter/app/modules/auth/submodules/login/login/widgets/semi_circle_widget.dart';
@@ -14,6 +15,24 @@ class LoginPage extends StatefulWidget {
 
 class LoginPageState extends ModularState<LoginPage, LoginController> {
   @override
+  void initState() {
+    super.initState();
+
+    controller.loginStream.listen((state) {
+      if (state is LoginLoadingState) {
+        //TODO overlay
+      } else if (state is LoginSuccessState) {
+        Modular.to.navigate('/home');
+      } else if (state is LoginErrorState) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(state.message),
+          backgroundColor: Theme.of(context).errorColor,
+        ));
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
@@ -24,9 +43,7 @@ class LoginPageState extends ModularState<LoginPage, LoginController> {
             padding: const EdgeInsets.symmetric(horizontal: 24.0),
             child: InputTextFieldWidget(
               label: "Email",
-              onChange: (v) {
-                //TODO: implementar
-              },
+              onChange: controller.onChangeEmail,
             ),
           ),
           const SizedBox(height: 16),
@@ -36,21 +53,15 @@ class LoginPageState extends ModularState<LoginPage, LoginController> {
               obscureText: true,
               label: "Senha",
               keyboardType: TextInputType.visiblePassword,
-              onChange: (v) {
-                //TODO: implementar
-              },
-              onSubmitted: (v) {
-                //TODO: implementar
-              },
+              onChange: controller.onChangePassword,
+              onSubmitted: (v) => controller.onSubmit(),
             ),
           ),
           const SizedBox(height: 24),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24.0),
-          child: LoginButtonWidget(
-              onPressed: () {
-                //TODO: implementar
-              },
+            child: LoginButtonWidget(
+              onPressed: controller.onSubmit,
             ),
           ),
           const SizedBox(height: 32),
