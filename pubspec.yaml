@@ -16,6 +16,7 @@ dependencies:
   flutter_modular: ^4.5.1+1
   flutter_bloc: ^8.0.1
   rxdart: ^0.27.3
+  google_fonts: ^2.3.1
 
 dev_dependencies:
   flutter_test:
