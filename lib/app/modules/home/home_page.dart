@@ -1,5 +1,6 @@
 import 'package:empresas_flutter/app/modules/home/blocs/home/home_bloc.dart';
 import 'package:empresas_flutter/app/modules/home/widgets/enterprise_card_widget.dart';
+import 'package:empresas_flutter/app/modules/home/widgets/no_result_widget.dart';
 import 'package:empresas_flutter/app/shared/models/investor_model.dart';
 import 'package:empresas_flutter/app/shared/repositories/base_api.dart';
 import 'package:flutter/material.dart';
@@ -49,6 +50,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -69,11 +71,40 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
           BlocBuilder<HomeBloc, HomeState>(
             bloc: controller.homeBloc,
             builder: (context, state) {
+              if (state.enterprises.isEmpty) {
+                return const Padding(
+                  padding: EdgeInsets.only(top: 32),
+                  child: NoResultWidget(),
+                );
+              }
+
               return Expanded(
                 child: ListView.builder(
                   itemCount: state.enterprises.length,
                   itemBuilder: (context, index) {
                     final enterprise = state.enterprises[index];
+
+                    if (index == 0) {
+                      return Column(
+                        children: [
+                          Align(
+                            alignment: Alignment.topLeft,
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                  bottom: 16.0, left: 24, right: 24),
+                              child: Text(
+                                  '${state.enterprises.length.toString().padLeft(2, "0")} resultados encontrados'),
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 24.0),
+                            child: EnterpriseCardWidget(enterprise: enterprise),
+                          ),
+                        ],
+                      );
+                    }
+
                     return Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 24.0),
                       child: EnterpriseCardWidget(enterprise: enterprise),
