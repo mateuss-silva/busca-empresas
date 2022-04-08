@@ -5,14 +5,17 @@ import 'package:empresas_flutter/app/shared/models/enterprise_model.dart';
 import 'package:empresas_flutter/app/shared/repositories/base_api.dart';
 import 'package:empresas_flutter/app/shared/utils/status_code_helper.dart';
 
-class EnterpriseRepository extends BaseApi implements IEnterpriseRepository {
-  EnterpriseRepository(Dio dio) : super(dio);
+class EnterpriseRepository implements IEnterpriseRepository {
+  EnterpriseRepository(this.api);
+
+  @override
+  final BaseApi api;
 
   @override
   Future<List<EnterpriseModel>> getCompanies(
       {int? enterpriseTypeId, String? name}) async {
     try {
-      var query = {};
+      var query = <String, dynamic>{};
 
       if (enterpriseTypeId != null) {
         query['enterprise_types'] = enterpriseTypeId;
@@ -21,7 +24,7 @@ class EnterpriseRepository extends BaseApi implements IEnterpriseRepository {
       if (name != null) query['name'] = name;
 
       Response response =
-          await dio.get(BaseApi.enterprisesPath, queryParams: query);
+          await api.dio.get(BaseApi.enterprisesPath, queryParameters: query);
 
       var enterprises = (response.data["enterprises"] as List)
           .map((e) => EnterpriseModel.fromJson(e))
@@ -43,7 +46,7 @@ class EnterpriseRepository extends BaseApi implements IEnterpriseRepository {
   @override
   Future<EnterpriseModel> getCompany(int id) async {
     try {
-      Response response = await dio.get("${BaseApi.enterprisesPath}/$id");
+      Response response = await api.dio.get("${BaseApi.enterprisesPath}/$id");
 
       var enterprise = EnterpriseModel.fromJson(response.data["enterprise"]);
 

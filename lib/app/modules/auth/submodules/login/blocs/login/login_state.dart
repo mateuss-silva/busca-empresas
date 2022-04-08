@@ -8,6 +8,8 @@ abstract class LoginState extends Equatable {
   List<Object> get props => [];
 }
 
+//TODO refatorar adicionando os campos pra abstract class
+
 class LoginIdleState extends LoginState {
   final LoginViewModel login;
 

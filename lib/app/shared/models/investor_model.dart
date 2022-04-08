@@ -1,3 +1,4 @@
+import 'package:empresas_flutter/app/shared/models/authorization_model.dart';
 import 'package:empresas_flutter/app/shared/models/enterprise_model.dart';
 import 'package:empresas_flutter/app/shared/models/portfolio_model.dart';
 
@@ -15,6 +16,8 @@ class InvestorModel {
   final bool superAngel;
 
   EnterpriseModel? enterprise;
+
+  AuthorizationModel? authorization;
 
   InvestorModel({
     required this.id,

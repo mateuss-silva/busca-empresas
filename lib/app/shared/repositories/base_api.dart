@@ -14,13 +14,13 @@ class BaseApi {
   get dio => _dio;
 
   BaseApi(this._dio) {
-    _dio.options.baseUrl = baseUrl;
-    _dio.options.headers = {"Content-Type": "application/json; charset=UTF-8"};
+    dio.options.baseUrl = baseUrl;
+    dio.options.headers = {"Content-Type": "application/json; charset=UTF-8"};
   }
 
-  setToken(String token) => _dio.options.headers["access-token"] = token;
+  setToken(String token) => dio.options.headers["access-token"] = token;
 
-  setUid(String uid) => _dio.options.headers["uid"] = uid;
+  setUid(String uid) => dio.options.headers["uid"] = uid;
 
-  setClient(String client) => _dio.options.headers["client"] = client;
+  setClient(String client) => dio.options.headers["client"] = client;
 }

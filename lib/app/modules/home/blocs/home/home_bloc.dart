@@ -11,28 +11,33 @@ part 'home_state.dart';
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final IEnterpriseRepository _enterpriseRepository;
 
-  HomeBloc(this._enterpriseRepository) : super(const HomeIdleState()) {
-    on<SearchChanged>(
-        (event, emit) => emit(HomeIdleState(search: event.search)));
+  HomeBloc(this._enterpriseRepository) : super(const HomeInitialState()) {
+    on<SearchChanged>((event, emit) => emit(
+        HomeIdleState(search: event.search, enterprises: state.enterprises)));
 
     on<SearchSubmitted>(_getEnterprises);
   }
 
   Future<void> _getEnterprises(
       SearchSubmitted event, Emitter<HomeState> emit) async {
-    var state = this.state as HomeIdleState;
-
-    emit(const HomeLoadingState());
+    emit(
+        HomeLoadingState(enterprises: state.enterprises, search: state.search));
 
     try {
       final enterprises =
           await _enterpriseRepository.getCompanies(name: state.search);
 
-      emit(HomeIdleState(enterprises: enterprises, search: state.search));
+      emit(HomeSuccessState(enterprises: enterprises, search: state.search));
     } on GenericException catch (e) {
-      emit(HomeErrorState(e.message));
+      emit(HomeErrorState(
+          message: e.message,
+          enterprises: state.enterprises,
+          search: state.search));
     } catch (e) {
-      emit(HomeErrorState(e.toString()));
+      emit(HomeErrorState(
+          message: e.toString(),
+          enterprises: state.enterprises,
+          search: state.search));
     }
   }
 }

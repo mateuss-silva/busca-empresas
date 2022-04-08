@@ -1,5 +1,6 @@
 import 'package:empresas_flutter/app/shared/models/enterprise_model.dart';
 import 'package:empresas_flutter/app/shared/utils/color_scheme_helper.dart';
+import 'package:empresas_flutter/app/shared/widgets/overlay_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
@@ -112,6 +113,9 @@ class _InputSearchWidgetState extends State<InputSearchWidget> {
                       fontWeight: FontWeight.w400,
                     )),
           );
+        },
+        loadingBuilder: (context) {
+          return const OverlayWidget();
         },
       ),
     );

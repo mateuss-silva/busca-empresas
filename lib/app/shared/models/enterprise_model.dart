@@ -13,7 +13,7 @@ class EnterpriseModel {
   String? photo;
   int? value;
   int? shares;
-  int? sharePrice;
+  double? sharePrice;
   int? ownShares;
   String? city;
   String? country;

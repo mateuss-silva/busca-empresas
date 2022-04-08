@@ -19,15 +19,12 @@ class LoginPageState extends ModularState<LoginPage, LoginController> {
   @override
   void initState() {
     super.initState();
-    //TODO REMOVER
-    Modular.to.navigate('/home');
-
     controller.loginStream.listen((state) {
       if (state is LoginLoadingState) {
         context.loaderOverlay.show();
       } else if (state is LoginSuccessState) {
         context.loaderOverlay.hide();
-        Modular.to.navigate('/home');
+        Modular.to.navigate('/home', arguments: state.investor);
       } else if (state is LoginErrorState) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(state.message),
