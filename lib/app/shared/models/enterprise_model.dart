@@ -2,7 +2,7 @@ import 'package:empresas_flutter/app/shared/models/enterprise_type_model.dart';
 
 class EnterpriseModel {
   int id;
-  String? name;
+  String name;
   String? description;
   String? email;
   String? facebook;
@@ -21,7 +21,7 @@ class EnterpriseModel {
 
   EnterpriseModel({
     required this.id,
-    this.name,
+    required this.name,
     this.description,
     this.email,
     this.facebook,

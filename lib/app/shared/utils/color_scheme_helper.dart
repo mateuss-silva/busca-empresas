@@ -5,6 +5,9 @@ class ColorSchemeHelper {
   static const hexSecondaryColor = 0xFFE01E69;
   static const hexOverlayColor = 0xFF404040;
   static const hexProgressIndicatorColor = 0xFFFBDBE7;
+  static const hexInputBackgroundColor = 0xFFF5F5F5;
+
+  static const inputBackground = Color(hexInputBackgroundColor);
 
   static const progressIndicatorColor = Color(hexProgressIndicatorColor);
 

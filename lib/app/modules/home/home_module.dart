@@ -1,8 +1,9 @@
+import 'package:dio/dio.dart';
+import 'package:empresas_flutter/app/modules/home/blocs/home/home_bloc.dart';
 import 'package:empresas_flutter/app/modules/home/controllers/enterprise_description_controller.dart';
 import 'package:empresas_flutter/app/modules/home/home_controller.dart';
 import 'package:empresas_flutter/app/modules/home/pages/enterprise_description_page.dart';
 import 'package:empresas_flutter/app/modules/home/repositories/enterprise_repository.dart';
-import 'package:empresas_flutter/app/modules/home/bloc/home_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'home_page.dart';
@@ -10,10 +11,13 @@ import 'home_page.dart';
 class HomeModule extends Module {
   @override
   final List<Bind> binds = [
-    Bind.lazySingleton((i) => EnterpriseRepository()),
+    Bind.lazySingleton((i) => EnterpriseRepository(i.get<Dio>())),
     Bind.factory((i) => EnterpriseDescriptionController()),
-    Bind.lazySingleton((i) => HomeController()),
-    Bind.lazySingleton((i) => HomeBloc()),
+    Bind.lazySingleton((i) => HomeBloc(i.get<EnterpriseRepository>())),
+    Bind.lazySingleton((i) => HomeController(
+          i.get<EnterpriseRepository>(),
+          i.get<HomeBloc>(),
+        )),
   ];
 
   @override

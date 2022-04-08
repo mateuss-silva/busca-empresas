@@ -1,8 +1,8 @@
-import 'package:empresas_flutter/app/modules/home/bloc/home_bloc.dart';
-import 'package:empresas_flutter/app/modules/home/home_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:empresas_flutter/app/modules/home/home_controller.dart';
+import 'package:empresas_flutter/app/modules/home/widgets/input_search_widget.dart';
+import 'package:empresas_flutter/app/modules/home/widgets/top_gradient_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -12,39 +12,39 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends ModularState<HomePage, HomeController> {
-  final HomeBloc _counter = Modular.get();
-
   @override
   void dispose() {
-    _counter.close();
     super.dispose();
   }
+
+  final searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Home")),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.remove),
-        onPressed: () => _counter.add(const IncrementEvent()),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text("Button Tapped:"),
-            BlocBuilder<HomeBloc, HomeState>(
-              bloc: _counter,
-              builder: (context, count) {
-                return Text(
-                  "${count.value}",
-                  style: Theme.of(context).textTheme.headline3,
-                );
-              },
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const TopGradientWidget(),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: InputSearchWidget(
+              onChangeSearchReturnSuggestions:
+                  controller.onChangeSearchReturnSuggestion,
+              controller: searchController,
+              onChange: controller.onChangeSearch,
+              onSelectSuggestion: _onSelectSuggestion,
+              onFieldSubmitted: controller.onSubmitSearch,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
+  }
+
+  _onSelectSuggestion(int id) {
+    Modular.to.pushNamed('/enterprise-description/$id');
   }
 }

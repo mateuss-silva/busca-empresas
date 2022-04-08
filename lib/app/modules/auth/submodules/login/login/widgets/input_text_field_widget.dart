@@ -1,3 +1,4 @@
+import 'package:empresas_flutter/app/shared/utils/color_scheme_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -75,10 +76,9 @@ class _InputTextFieldWidgetState extends State<InputTextFieldWidget> {
           ],
           textAlignVertical: TextAlignVertical.center,
           decoration: InputDecoration(
-            contentPadding:
-                const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+            contentPadding: const EdgeInsets.all(16),
             filled: true,
-            fillColor: const Color(0xFFF5F5F5),
+            fillColor: ColorSchemeHelper.inputBackground,
             enabledBorder: OutlineInputBorder(
               borderSide: const BorderSide(
                 color: Colors.transparent,
