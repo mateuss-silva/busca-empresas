@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:empresas_flutter/app/modules/home/blocs/home/home_bloc.dart';
 import 'package:empresas_flutter/app/modules/home/controllers/enterprise_description_controller.dart';
 import 'package:empresas_flutter/app/modules/home/home_controller.dart';

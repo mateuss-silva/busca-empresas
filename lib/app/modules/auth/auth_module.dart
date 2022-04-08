@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:empresas_flutter/app/modules/auth/repositories/auth_repository.dart';
 import 'package:empresas_flutter/app/modules/auth/submodules/login/blocs/login/login_bloc.dart';
 import 'package:empresas_flutter/app/modules/auth/submodules/login/login_controller.dart';

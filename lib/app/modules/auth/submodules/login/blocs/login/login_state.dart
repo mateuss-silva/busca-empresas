@@ -2,27 +2,29 @@ part of 'login_bloc.dart';
 
 @immutable
 abstract class LoginState extends Equatable {
-  const LoginState();
+  final LoginViewModel login;
+  const LoginState(this.login);
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [login];
 }
 
-//TODO refatorar adicionando os campos pra abstract class
+class LoginInitialState extends LoginState {
+  const LoginInitialState() : super(const LoginViewModel());
+
+  @override
+  List<Object> get props => [login];
+}
 
 class LoginIdleState extends LoginState {
-  final LoginViewModel login;
-
-  const LoginIdleState({
-    this.login = const LoginViewModel(),
-  }) : super();
+  const LoginIdleState({required LoginViewModel login}) : super(login);
 
   @override
   List<Object> get props => [login];
 }
 
 class LoginLoadingState extends LoginState {
-  const LoginLoadingState();
+  const LoginLoadingState({required LoginViewModel login}) : super(login);
   @override
   List<Object> get props => [];
 }
@@ -30,10 +32,12 @@ class LoginLoadingState extends LoginState {
 class LoginSuccessState extends LoginState {
   final InvestorModel investor;
 
-  const LoginSuccessState(this.investor) : super();
+  const LoginSuccessState(
+      {required this.investor, required LoginViewModel login})
+      : super(login);
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [investor, login];
 }
 
 class LoginErrorState extends LoginState {
@@ -41,5 +45,9 @@ class LoginErrorState extends LoginState {
 
   const LoginErrorState({
     required this.message,
-  }) : super();
+    required LoginViewModel login,
+  }) : super(login);
+
+  @override
+  List<Object> get props => [message, login];
 }

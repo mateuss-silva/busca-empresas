@@ -26,6 +26,7 @@ class LoginPageState extends ModularState<LoginPage, LoginController> {
         context.loaderOverlay.hide();
         Modular.to.navigate('/home', arguments: state.investor);
       } else if (state is LoginErrorState) {
+        context.loaderOverlay.hide();
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(state.message),
           backgroundColor: Theme.of(context).errorColor,

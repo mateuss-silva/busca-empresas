@@ -19,11 +19,12 @@ class HomeInitialState extends HomeState {
 }
 
 class HomeIdleState extends HomeState {
-  const HomeIdleState({required String search, required List<EnterpriseModel> enterprises})
+  const HomeIdleState(
+      {required String search, required List<EnterpriseModel> enterprises})
       : super(search: search, enterprises: enterprises);
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [search, enterprises];
 }
 
 class HomeLoadingState extends HomeState {
@@ -33,7 +34,7 @@ class HomeLoadingState extends HomeState {
   }) : super(enterprises: enterprises, search: search);
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [enterprises, search];
 }
 
 class HomeSuccessState extends HomeState {
@@ -43,7 +44,7 @@ class HomeSuccessState extends HomeState {
   }) : super(enterprises: enterprises, search: search);
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [search, enterprises];
 }
 
 class HomeErrorState extends HomeState {
@@ -56,5 +57,5 @@ class HomeErrorState extends HomeState {
   }) : super(enterprises: enterprises, search: search);
 
   @override
-  List<Object?> get props => [message];
+  List<Object?> get props => [message, search, enterprises];
 }

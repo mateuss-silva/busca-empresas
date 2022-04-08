@@ -1,5 +1,7 @@
 import 'package:empresas_flutter/app/modules/home/blocs/home/home_bloc.dart';
+import 'package:empresas_flutter/app/modules/home/widgets/enterprise_card_widget.dart';
 import 'package:empresas_flutter/app/shared/models/investor_model.dart';
+import 'package:empresas_flutter/app/shared/repositories/base_api.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -72,13 +74,9 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                   itemCount: state.enterprises.length,
                   itemBuilder: (context, index) {
                     final enterprise = state.enterprises[index];
-                    //TODO fazer card com informações da empresa
-                    return ListTile(
-                      title: Text(enterprise.name),
-                      subtitle: Text(enterprise.description!),
-                      onTap: () {
-                        //Modular.to.pushNamed('/enterprise');
-                      },
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                      child: EnterpriseCardWidget(enterprise: enterprise),
                     );
                   },
                 ),
