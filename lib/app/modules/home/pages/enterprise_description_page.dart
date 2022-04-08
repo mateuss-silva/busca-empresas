@@ -2,16 +2,12 @@ import 'package:empresas_flutter/app/modules/home/blocs/enterprise_description/e
 import 'package:empresas_flutter/app/modules/home/controllers/enterprise_description_controller.dart';
 import 'package:empresas_flutter/app/modules/home/widgets/back_button_widget.dart';
 import 'package:empresas_flutter/app/modules/home/widgets/enterprise_image_widget.dart';
-import 'package:empresas_flutter/app/modules/home/widgets/icon_button_widget.dart';
 import 'package:empresas_flutter/app/modules/home/widgets/social_media_widget.dart';
 import 'package:empresas_flutter/app/shared/models/enterprise_model.dart';
-import 'package:empresas_flutter/app/shared/utils/color_scheme_helper.dart';
 import 'package:empresas_flutter/app/shared/widgets/overlay_widget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class EnterpriseDescriptionPage extends StatefulWidget {
   final EnterpriseModel enterprise;
