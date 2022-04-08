@@ -9,7 +9,7 @@ class HomeController extends Disposable {
   final HomeBloc homeBloc;
 
   HomeController(this._enterpriseRepository, this.homeBloc) {
-    homeBloc.add(const SearchSubmitted());
+    homeBloc.add(const SearchSubmittedEvent());
   }
 
   Stream<HomeState> get homeStream => homeBloc.stream;
@@ -24,15 +24,15 @@ class HomeController extends Disposable {
     _enterpriseRepository.api.setToken(investor.authorization!.accessToken);
   }
 
-  void onChangeSearch(String value) => homeBloc.add(SearchChanged(value));
+  void onChangeSearch(String value) => homeBloc.add(SearchChangedEvent(value));
 
   Stream<HomeState> get enterprisesStream => homeBloc.stream;
 
   Future<List<EnterpriseModel>> onChangeSearchReturnSuggestion(String search) =>
-      _enterpriseRepository.getCompanies(name: search);
+      _enterpriseRepository.getEnterprises(name: search);
 
   onSubmitSearch(String value) {
-    homeBloc.add(const SearchSubmitted());
+    homeBloc.add(const SearchSubmittedEvent());
   }
 
   @override

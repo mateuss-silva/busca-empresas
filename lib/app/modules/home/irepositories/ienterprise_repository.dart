@@ -6,8 +6,8 @@ abstract class IEnterpriseRepository {
 
   IEnterpriseRepository(this.api);
 
-  Future<EnterpriseModel> getCompany(int id);
+  Future<EnterpriseModel> getEnterprise(int id);
 
-  Future<List<EnterpriseModel>> getCompanies(
+  Future<List<EnterpriseModel>> getEnterprises(
       {int? enterpriseTypeId, String? name});
 }

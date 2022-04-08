@@ -12,20 +12,20 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final IEnterpriseRepository _enterpriseRepository;
 
   HomeBloc(this._enterpriseRepository) : super(const HomeInitialState()) {
-    on<SearchChanged>((event, emit) => emit(
+    on<SearchChangedEvent>((event, emit) => emit(
         HomeIdleState(search: event.search, enterprises: state.enterprises)));
 
-    on<SearchSubmitted>(_getEnterprises);
+    on<SearchSubmittedEvent>(_getEnterprises);
   }
 
   Future<void> _getEnterprises(
-      SearchSubmitted event, Emitter<HomeState> emit) async {
+      SearchSubmittedEvent event, Emitter<HomeState> emit) async {
     emit(
         HomeLoadingState(enterprises: state.enterprises, search: state.search));
 
     try {
       final enterprises =
-          await _enterpriseRepository.getCompanies(name: state.search);
+          await _enterpriseRepository.getEnterprises(name: state.search);
 
       emit(HomeSuccessState(enterprises: enterprises, search: state.search));
     } on GenericException catch (e) {

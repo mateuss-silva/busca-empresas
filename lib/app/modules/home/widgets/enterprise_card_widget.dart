@@ -1,6 +1,7 @@
+import 'package:empresas_flutter/app/modules/home/widgets/enterprise_image_widget.dart';
 import 'package:empresas_flutter/app/shared/models/enterprise_model.dart';
-import 'package:empresas_flutter/app/shared/repositories/base_api.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class EnterpriseCardWidget extends StatelessWidget {
   final EnterpriseModel enterprise;
@@ -19,45 +20,16 @@ class EnterpriseCardWidget extends StatelessWidget {
           children: [
             InkWell(
               onTap: () {
-                //Modular.to.pushNamed('/enterprise');
+                Modular.to.pushNamed(
+                    '/home/enterprise-description/${enterprise.id}',
+                    arguments: enterprise);
               },
               child: ClipRRect(
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(8),
                   topRight: Radius.circular(8),
                 ),
-                child: Hero(
-                  tag: enterprise.id,
-                  child: Image.network(
-                    "${BaseApi.baseUrl}${enterprise.photo ?? ''}",
-                    fit: BoxFit.fill,
-                    errorBuilder: (context, error, stackTrace) {
-                      return Image.asset(
-                        'assets/logo.png',
-                        color: Theme.of(context).primaryColor,
-                        fit: BoxFit.fill,
-                        height: 160,
-                      );
-                    },
-                    loadingBuilder: (BuildContext context, Widget child,
-                        ImageChunkEvent? loadingProgress) {
-                      if (loadingProgress == null) {
-                        return child;
-                      }
-                      return SizedBox(
-                        height: 160,
-                        child: Center(
-                          child: CircularProgressIndicator(
-                            value: loadingProgress.expectedTotalBytes != null
-                                ? loadingProgress.cumulativeBytesLoaded /
-                                    loadingProgress.expectedTotalBytes!
-                                : null,
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                ),
+                child: EnterpriseImageWidget(enterprise: enterprise),
               ),
             ),
             Padding(

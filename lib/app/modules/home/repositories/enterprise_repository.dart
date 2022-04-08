@@ -12,7 +12,7 @@ class EnterpriseRepository implements IEnterpriseRepository {
   final BaseApi api;
 
   @override
-  Future<List<EnterpriseModel>> getCompanies(
+  Future<List<EnterpriseModel>> getEnterprises(
       {int? enterpriseTypeId, String? name}) async {
     try {
       var query = <String, dynamic>{};
@@ -44,7 +44,7 @@ class EnterpriseRepository implements IEnterpriseRepository {
   }
 
   @override
-  Future<EnterpriseModel> getCompany(int id) async {
+  Future<EnterpriseModel> getEnterprise(int id) async {
     try {
       Response response = await api.dio.get("${BaseApi.enterprisesPath}/$id");
 

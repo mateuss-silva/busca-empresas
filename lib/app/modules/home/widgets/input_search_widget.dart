@@ -10,7 +10,7 @@ class InputSearchWidget extends StatefulWidget {
   final Function(String) onChange;
   final Future<List<EnterpriseModel>> Function(String)
       onChangeSearchReturnSuggestions;
-  final Function(int) onSelectSuggestion;
+  final Function(EnterpriseModel) onSelectSuggestion;
   final Function(String) onFieldSubmitted;
   final TextEditingController controller;
   const InputSearchWidget({
@@ -38,7 +38,7 @@ class _InputSearchWidgetState extends State<InputSearchWidget> {
         onSuggestionSelected: (EnterpriseModel enterprise) {
           widget.controller.text = enterprise.name;
           widget.onChange(enterprise.name);
-          widget.onSelectSuggestion(enterprise.id);
+          widget.onSelectSuggestion(enterprise);
         },
         textFieldConfiguration: TextFieldConfiguration(
           onChanged: widget.onChange,

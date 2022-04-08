@@ -1,8 +1,8 @@
 import 'package:empresas_flutter/app/modules/home/blocs/home/home_bloc.dart';
 import 'package:empresas_flutter/app/modules/home/widgets/enterprise_card_widget.dart';
 import 'package:empresas_flutter/app/modules/home/widgets/no_result_widget.dart';
+import 'package:empresas_flutter/app/shared/models/enterprise_model.dart';
 import 'package:empresas_flutter/app/shared/models/investor_model.dart';
-import 'package:empresas_flutter/app/shared/repositories/base_api.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -119,7 +119,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
     );
   }
 
-  _onSelectSuggestion(int id) {
-    //Modular.to.pushNamed('/enterprise-description/$id');
+  _onSelectSuggestion(EnterpriseModel enterprise) {
+    Modular.to.pushNamed('/home/enterprise-description/${enterprise.id}', arguments: enterprise);
   }
 }

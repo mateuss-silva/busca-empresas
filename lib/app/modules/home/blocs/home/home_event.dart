@@ -8,17 +8,17 @@ abstract class HomeEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-class SearchChanged extends HomeEvent {
+class SearchChangedEvent extends HomeEvent {
   final String search;
 
-  const SearchChanged(this.search) : super();
+  const SearchChangedEvent(this.search) : super();
 
   @override
   List<Object?> get props => [search];
 }
 
-class SearchSubmitted extends HomeEvent {
-  const SearchSubmitted() : super();
+class SearchSubmittedEvent extends HomeEvent {
+  const SearchSubmittedEvent() : super();
 
   @override
   List<Object?> get props => [];

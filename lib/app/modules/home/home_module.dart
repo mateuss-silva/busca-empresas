@@ -1,3 +1,4 @@
+import 'package:empresas_flutter/app/modules/home/blocs/enterprise_description/enterprise_description_bloc.dart';
 import 'package:empresas_flutter/app/modules/home/blocs/home/home_bloc.dart';
 import 'package:empresas_flutter/app/modules/home/controllers/enterprise_description_controller.dart';
 import 'package:empresas_flutter/app/modules/home/home_controller.dart';
@@ -12,7 +13,10 @@ class HomeModule extends Module {
   @override
   final List<Bind> binds = [
     Bind.lazySingleton((i) => EnterpriseRepository(i.get<BaseApi>())),
-    Bind.factory((i) => EnterpriseDescriptionController()),
+    Bind.factory(
+        (i) => EnterpriseDescriptionBloc(i.get<EnterpriseRepository>())),
+    Bind.factory((i) =>
+        EnterpriseDescriptionController(i.get<EnterpriseDescriptionBloc>())),
     Bind.lazySingleton((i) => HomeBloc(i.get<EnterpriseRepository>())),
     Bind.lazySingleton((i) => HomeController(
           i.get<EnterpriseRepository>(),
@@ -25,6 +29,7 @@ class HomeModule extends Module {
     ChildRoute(Modular.initialRoute,
         child: (context, args) => HomePage(investor: args.data)),
     ChildRoute('/enterprise-description/:id',
-        child: (context, args) => const EnterpriseDescriptionPage()),
+        child: (context, args) =>
+            EnterpriseDescriptionPage(enterprise: args.data)),
   ];
 }
