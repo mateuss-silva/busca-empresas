@@ -22,7 +22,5 @@
 
 ## Dados para Teste
 
-- Servidor: https://empresas.ioasys.com.br/api
-- Versão da API: v1
 - Usuário de Teste: testeapple@ioasys.com.br
 - Senha de Teste : 12341234
