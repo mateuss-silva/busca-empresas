@@ -24,3 +24,9 @@
 
 - Usuário de Teste: testeapple@ioasys.com.br
 - Senha de Teste : 12341234
+
+## Pendências
+
+- Persistência do usuário
+- Refinamento de UI
+- Refinamento de gerenciamento de estados
