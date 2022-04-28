@@ -8,7 +8,7 @@
 - Detalhamento de Empresas
 - **OBS:** Para ter acesso as demais APIS precisamos enviar esses 3 custom headers para a API autorizar a requisição;
 
-## Arquitetura padrões e utilizados
+## Arquitetura e padrões utilizados
 
 - Princípios SOLID;
 - **Gerenciamento de estados:** FlutterBloc orientado a eventos;
