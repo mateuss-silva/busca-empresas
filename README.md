@@ -17,7 +17,6 @@
 - **Padrão de projeto**
   - Publish-Subscribe
   - Singleton
-  - ViewModel
   - MVC
 
 ## Dados para Teste
